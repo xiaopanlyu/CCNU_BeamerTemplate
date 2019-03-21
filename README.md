@@ -1,4 +1,4 @@
-# 华中师范大学幻灯片模板
+# 华中师范大学工程中心幻灯片模板
 ## 使用说明
 1. 下载并安装 TeXLive；
 2. 下载本模板文件（使用 ```git``` 命令或在
@@ -8,8 +8,8 @@
 TeXLive 2017```和 ```Ubuntu 16.04 + TeXLive 2017``` 平台上测试）。
 
 ## 截图展示
-![](https://github.com/K-JW/CCNU_BeamerTemplate/blob/master/figures/page_01.jpg)
-![](https://github.com/K-JW/CCNU_BeamerTemplate/blob/master/figures/page_03.jpg)
+#![](https://github.com/K-JW/CCNU_BeamerTemplate/blob/master/figures/page_01.jpg)
+#![](https://github.com/K-JW/CCNU_BeamerTemplate/blob/master/figures/page_03.jpg)
 
 ## 更新日志
 * 2018-01-17 :

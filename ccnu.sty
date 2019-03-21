@@ -1,5 +1,5 @@
-%% FileName    : ccnu.sty
-%% Author      : Kang Jin-Wen <kangjinwen@mails.ccnu.edu.cn>
+%% FileName    : ccnu-nercel.sty
+%% Author      : Xiaopan Lyu edit from Kang Jin-Wen <kangjinwen@mails.ccnu.edu.cn>
 %% Created     : Thu Nov 19 21:41 2016 by Kang Jin-Wen
 %% Copyright   :  (c) 2016
 %% Description : Beamer for CCNU
@@ -73,9 +73,11 @@
 \setbeamertemplate{background}{\pgfuseimage{bg}}
 
 % Colors
+
 %\usecolortheme[RGB={182,11,45}]{structure}%红
 %\usecolortheme[RGB={0,98,109}]{structure}%华大绿
 \usecolortheme[RGB={18,149,216}]{structure}%华大绿#
+
 
 \setbeamercolor{frametitle}{parent=subsection in head/foot}
 \setbeamercolor{frametitle right}{parent=section in head/foot}
@@ -113,7 +115,8 @@
 
 \defbeamertemplate*{headline}{ccnu theme}{%
   \leavevmode%
-  \@tempdimb=6.4375ex%
+  \@tempdimb=3.4375ex%
+  %\@tempdimb=6.4375ex
     %\multiply\@tempdimb by\beamer@sectionmax%
     \pgfdeclareimage[height=.95\@tempdimb]{logo}{res/ccnu_logo.png}%
     \pgfdeclareimage[height=1.\@tempdimb]{title_logo}{res/ccnu_title.png}%

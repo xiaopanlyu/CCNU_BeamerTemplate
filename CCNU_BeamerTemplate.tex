@@ -1,5 +1,6 @@
 %# -*- coding:utf-8 -*-
-\documentclass[10pt,aspectratio=169,mathserif]{beamer}		
+%\documentclass[10pt,aspectratio=169,mathserif]{beamer}	
+\documentclass[10pt,aspectratio=169,compress,t,noamsthm,notheorem,handout,table]{ctexbeamer}	
 %设置为 Beamer 文档类型，设置字体为 10pt，长宽比为16:9，数学字体为 serif 风格
 
 %%%%-----导入宏包-----%%%%
@@ -22,24 +23,24 @@
 %%%%%%%%%%%%%%%%%%%%%
 
 %%%%----首页信息设置----%%%%
-\title[ 华中师大 Beamer 模板]{华中师范大学 Beamer 模板}
-\subtitle{——这里是副标题}			
+\title[代数机器解答]{初等数学代数型题目机器解答研究}
+%\subtitle{——这里是副标题}			
 %%%%----标题设置
 
 
-\author[Kang Jin-Wen]{
-  康锦文 \\\medskip
-  {\small \url{kangjinwen@mails.ccnu.edu.cn}} \\
-  {\small \url{http://www.ccnu.edu.cn/}}}
+\author[Xiaopan Lyu]{
+  吕小攀 \\\medskip
+  {\small \url{xiaopanlyu@mails.ccnu.edu.cn}} \\
+  {\small \url{https://github.com/xiaopanlyu}}}
 %%%%----个人信息设置
   
-\institute[IOPP]{
-  粒子物理研究所 \\ 
+\institute[NERCEL]{
+  国家数字化学习工程技术研究中心 \\ 
   华中师范大学}
 %%%%----机构信息
 
-\date[Dec. 01 2016]{
-  2016年12月01日}
+\date[Apr. 04 2019]{
+  2019年04月04日}
 %%%%----日期信息
   
 \begin{document}
@@ -48,13 +49,17 @@
 \titlepage
 \end{frame}				%生成标题页
 
-\section{提纲}
 \begin{frame}
-\frametitle{提纲}
-\tableofcontents
+\frametitle{Outline}
+ \tableofcontents[hideallsubsections]
 \end{frame}				%生成提纲页
 
+% 在每节前插入目录
+\AtBeginSection[]{\frame{\tableofcontents[currentsection,hideallsubsections]}}
+
 \section{介绍}
+
+
 \begin{frame}
   \frametitle{介绍}
 

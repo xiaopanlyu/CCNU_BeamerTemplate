@@ -19,6 +19,11 @@
 %
 % 1. under the LaTeX Project Public License and/or
 % 2. under the GNU Public License.
+
+%--------------------------------------------------------
+% Require tikz to do some text positioning
+%--------------------------------------------------------
+\usepackage{tikz}
 %
 
 %begin>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
@@ -38,7 +43,7 @@
 \setbeamertemplate{enumerate items}[circle]% Enumerate items: default, circle, square, ball
 \setbeamertemplate{sections/subsections in toc}[default]% Outline: default, sections numbered, subsections numbered, circle, square, ball, ball unnumbered
 \setbeamertemplate{blocks}[rounded]% General blocks:
-\setbeamertemplate{title page}[default][colsep=-4bp,rounded=true]% Title page:
+%\setbeamertemplate{title page}[default][colsep=-4bp,rounded=true]% Title page:
 \setbeamertemplate{part page}[default][colsep=-4bp,rounded=true]% Part page:
 % \setbeamertemplate{navigation symbols}{}% Navigation symbols:
 %end<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
@@ -47,12 +52,15 @@
 %begin>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 %%% defining colors for the center-controlling of the theme
 %======================================================================================================================
+% Define colour names
 \definecolor{myfoot}{rgb}{0.5,0.2,0.5}
 \definecolor{darkblue}{rgb}{0.1,0,0.85}
 \definecolor{ccnublue}{RGB}{18,149,216}%华大蓝
 \definecolor{ccnugreen}{RGB}{0,98,109}%华大绿
 \definecolor{ccnuorange}{RGB}{241,139,46}%华大橙
 \definecolor{nercelblue}{RGB}{4,96,183}%NERCEL蓝
+
+
 %end<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 %begin>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
@@ -60,7 +68,7 @@
 %======================================================================================================================
 % Background 设置整个frame的背景图片
 \pgfdeclareimage[width=\paperwidth,height=\paperheight]{bg}{res/ccnu_background}
-\setbeamertemplate{background}{\pgfuseimage{bg}}
+%\setbeamertemplate{background}{\pgfuseimage{bg}}
 
 % Colors 设置主题颜色
 %\usecolortheme[RGB={182,11,45}]{structure}%red
@@ -89,11 +97,12 @@
 
 
 %begin>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-%%% 定义工具栏 蓝色盒子|红色盒子|蓝线框|红线框
+%%% Set element colours,设置一些元素的颜色  蓝色盒子|红色盒子|蓝线框|红线框
 %======================================================================================================================
-\setbeamercolor{bluebox}{fg=black,bg=blue}
-\setbeamercolor{whitebox}{fg=black,bg=white}
-\setbeamercolor{ccnubluebox}{fg=white,bg=ccnublue}
+\setbeamercolor{f_black_b_blue_box}{fg=black,bg=blue}
+\setbeamercolor{f_black_b_white_box}{fg=black,bg=white}
+\setbeamercolor{f_blue_b_white_box}{fg=black,bg=white}
+\setbeamercolor{f_white_b_ccnublue_box}{fg=white,bg=ccnublue}
 \setbeamercolor{redbox}{fg=black,bg=red}
 \newenvironment{Boxblue}[1][\textwidth]
   {\begin{beamercolorbox}[sep=0.1em,shadow=true,wd=#1,rounded=true,center]{bluebox}}
@@ -101,30 +110,93 @@
 \newenvironment{Boxred}[1][\textwidth]
   {\begin{beamercolorbox}[sep=0.1em,shadow=true,wd=#1,rounded=true,center]{redbox}}
   {\end{beamercolorbox}}
-%#<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+%end<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+
+%--------------------------------------------------------
+% Set font sizes
+%--------------------------------------------------------
+\setbeamerfont{frametitle}{size=\large,series=\bfseries}
+\setbeamerfont{title}{size=\large,series=\bfseries}
+\setbeamerfont{author}{size=\normalsize}
+\setbeamerfont{date}{size=\scriptsize}
+\setbeamerfont{subtitle}{size=\footnotesize,series=\bfseries}
+\setbeamerfont{block title}{size=\normalsize,series=\bfseries}
+\setbeamerfont{structure}{size=\normalsize,series=\bfseries}
+
+\setbeamertemplate{itemize item}{\scriptsize\raise1.25pt\hbox{\textbullet}}
+\setbeamertemplate{itemize subitem}{\scriptsize\raise1.25pt\hbox{\textbullet}}
+\setbeamertemplate{itemize subsubitem}{\scriptsize\raise1.25pt\hbox{\textbullet}}
+
+
+%--------------------------------------------------------
+
+
+%begin>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+%%% Define title page
+%======================================================================================================================
+\setbeamertemplate{title page}{%
+	\@tempdimb=4ex
+	\pgfdeclareimage[height=1.\@tempdimb]{ccnu_logo_title}{res/ccnu_logo_title.png}%
+	\pgfdeclareimage[height=1.\@tempdimb]{nercel_logo_title}{res/nercel_logo_title.png}%
+	\begin{beamercolorbox}[right,wd=\paperwidth,ht=.2\paperheight,rightskip=0.05\paperwidth]{f_black_b_white_box}
+	%\includegraphics[width=0.3820\paperwidth]{nk_logo.png}
+		\vbox to\@tempdimb{\vfil\pgfuseimage{nercel_logo_title}\vfil}%
+		%\vspace{10pt}
+		\vskip15pt
+	\end{beamercolorbox}
+	
+	\begin{beamercolorbox}[left,leftskip=0.05\paperwidth,wd=\paperwidth,ht=.1\paperheight]{f_white_b_ccnublue_box}
+		\tikz{
+			\node[inner sep=0cm, text width=\paperwidth, minimum height=.05\paperheight,text badly ragged]{
+				\usebeamerfont{title}\inserttitle
+			};
+		}%
+		\vskip0pt
+	\end{beamercolorbox}%
+	
+	\nointerlineskip%
+	\vskip-1pt%
+	
+	\begin{beamercolorbox}[left,leftskip=0.05\paperwidth,wd=\paperwidth,ht=.5\paperheight]{f_white_b_ccnublue_box}
+		\usebeamerfont{author}\insertauthor\\
+		\vskip15pt
+		\usebeamerfont{institute}\insertinstitute\\
+		\vskip15pt
+		\usebeamerfont{date}\insertdate
+		\vskip20pt
+	\end{beamercolorbox}%
+		
+	\begin{beamercolorbox}[center,wd=\paperwidth,ht=.2\paperheight,]{f_white_b_ccnublue_box}
+		\vbox to\@tempdimb{
+			\vfil\pgfuseimage{ccnu_logo_title}\vfil
+		}%
+		\vskip15pt
+	\end{beamercolorbox}
+}
+%end<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 %begin>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 %%% 设置页眉 headline: navigation | LOGO_TITLE |
 %======================================================================================================================
 \defbeamertemplate*{headline}{ccnu theme}{%
-  \leavevmode%
-  %\@tempdimb=3.4375ex%
-  \@tempdimb=2em%
-  %\multiply\@tempdimb by\beamer@sectionmax%
-  \pgfdeclareimage[height=.95\@tempdimb]{logo}{res/ccnu_logo.png}%
-  \pgfdeclareimage[height=1.\@tempdimb]{title_logo}{res/ccnu_title.png}%
-  \pgfdeclareimage[height=1.\@tempdimb]{logo_title}{res/ccnu_logo_title.png}%
-  \hbox{%
-  \begin{beamercolorbox}[wd=.9\paperwidth,ht=\@tempdimb]{ccnubluebox}%
-    \vbox to\@tempdimb{\vfil\insertsectionnavigationhorizontal{.5\textwidth}{\hskip0pt plus1filll}{}\vfil}%
-  \end{beamercolorbox}%
-  %\begin{beamercolorbox}[wd=.065\paperwidth,ht=\@tempdimb,center]{ccnubluebox}%
-  %  \vbox to\@tempdimb{\vfil\insertlogo\vfil\vfil}%
-  %\end{beamercolorbox}%
-  \begin{beamercolorbox}[wd=.1\paperwidth,ht=\@tempdimb,center]{ccnubluebox}%
-    \vbox to\@tempdimb{\vfil\pgfuseimage{logo_title}\vfil}%
-  \end{beamercolorbox}}%
-  \vskip0pt%
+	\leavevmode%
+	%\@tempdimb=3.4375ex%
+	\@tempdimb=2em%
+	%\multiply\@tempdimb by\beamer@sectionmax%
+	\pgfdeclareimage[height=.95\@tempdimb]{logo}{res/ccnu_logo.png}%
+	\pgfdeclareimage[height=1.\@tempdimb]{title_logo}{res/ccnu_title.png}%
+	\pgfdeclareimage[height=1.\@tempdimb]{logo_title}{res/ccnu_logo_title.png}%
+	\hbox{%
+	\begin{beamercolorbox}[wd=.9\paperwidth,ht=\@tempdimb]{f_white_b_ccnublue_box}%
+	\vbox to\@tempdimb{\vfil\insertsectionnavigationhorizontal{.5\textwidth}{\hskip0pt plus1filll}{}\vfil}%
+	\end{beamercolorbox}%
+	%\begin{beamercolorbox}[wd=.065\paperwidth,ht=\@tempdimb,center]{ccnubluebox}%
+	%  \vbox to\@tempdimb{\vfil\insertlogo\vfil\vfil}%
+	%\end{beamercolorbox}%
+	\begin{beamercolorbox}[wd=.1\paperwidth,ht=\@tempdimb,center]{f_white_b_ccnublue_box}%
+	\vbox to\@tempdimb{\vfil\pgfuseimage{logo_title}\vfil}%
+	\end{beamercolorbox}}%
+	\vskip0pt%
 }
 %end<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
@@ -132,25 +204,25 @@
 %%% 设置页脚 Footline: AUTHOR | TITLE | DATE FRAMENUMBER
 %======================================================================================================================
 \defbeamertemplate*{footline}{ccnu theme}{%
-  \leavevmode%
-  \@tempdimb=1em%
-   \hbox{%
-  %\begin{beamercolorbox}[wd=.25\paperwidth,ht=1.\@tempdimb,dp=1ex,center]{bluebox}%
-  %  \usebeamerfont{author in head/foot}\insertshortauthor
-  %\end{beamercolorbox}%
-  %\begin{beamercolorbox}[wd=.25\paperwidth,ht=1.\@tempdimb,dp=1ex,center]{bluebox}%
-  %  \usebeamerfont{author in head/foot}\insertshortdate
-  %\end{beamercolorbox}%
-  \begin{beamercolorbox}[wd=.5\paperwidth,ht=1.\@tempdimb,dp=1ex,center]{redbox}%
-    \usebeamerfont{title in head/foot}
-  \end{beamercolorbox}%
-  \begin{beamercolorbox}[wd=.435\paperwidth,ht=1.\@tempdimb,dp=1ex,center]{ccnubluebox}%
-    \usebeamerfont{title in head/foot}\insertshorttitle
-  \end{beamercolorbox}%
-   \begin{beamercolorbox}[wd=0.065\paperwidth,ht=1.\@tempdimb,dp=1ex,right]{ccnubluebox}%
-    \insertframenumber{} / \inserttotalframenumber\hspace*{2ex}
-  \end{beamercolorbox}}%
-  \vskip0pt%
+	\leavevmode%
+	\@tempdimb=1em%
+	\hbox{%
+	%\begin{beamercolorbox}[wd=.25\paperwidth,ht=1.\@tempdimb,dp=1ex,center]{bluebox}%
+	%  \usebeamerfont{author in head/foot}\insertshortauthor
+	%\end{beamercolorbox}%
+	%\begin{beamercolorbox}[wd=.25\paperwidth,ht=1.\@tempdimb,dp=1ex,center]{bluebox}%
+	%  \usebeamerfont{author in head/foot}\insertshortdate
+	%\end{beamercolorbox}%
+	\begin{beamercolorbox}[wd=.5\paperwidth,ht=1.\@tempdimb,dp=1ex,center]{redbox}%
+	\usebeamerfont{title in head/foot}
+	\end{beamercolorbox}%
+	\begin{beamercolorbox}[wd=.435\paperwidth,ht=1.\@tempdimb,dp=1ex,center]{f_white_b_ccnublue_box}%
+	\usebeamerfont{title in head/foot}\insertshorttitle
+	\end{beamercolorbox}%
+	\begin{beamercolorbox}[wd=0.065\paperwidth,ht=1.\@tempdimb,dp=1ex,right]{f_white_b_ccnublue_box}%
+	\insertframenumber{} / \inserttotalframenumber\hspace*{2ex}
+	\end{beamercolorbox}}%
+	\vskip0pt%
 }
 %end<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 

@@ -21,9 +21,10 @@
 % 2. under the GNU Public License.
 
 %--------------------------------------------------------
-% Require tikz to do some text positioning
+% Require packages
 %--------------------------------------------------------
-\usepackage{tikz}
+\usepackage{tikz}% tikz to do some text positioning
+\usefonttheme{professionalfonts}%serif,avant,bookman,chancery,chartereuler,helvet,mathtime,mathptm,mathptmxnewcent,palatino,pifont,utopia
 %
 
 %begin>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
@@ -52,15 +53,29 @@
 %begin>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 %%% defining colors for the center-controlling of the theme
 %======================================================================================================================
-% Define colour names
 \definecolor{myfoot}{rgb}{0.5,0.2,0.5}
 \definecolor{darkblue}{rgb}{0.1,0,0.85}
 \definecolor{ccnublue}{RGB}{18,149,216}%华大蓝
 \definecolor{ccnugreen}{RGB}{0,98,109}%华大绿
 \definecolor{ccnuorange}{RGB}{241,139,46}%华大橙
 \definecolor{nercelblue}{RGB}{4,96,183}%NERCEL蓝
+%end<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
+%begin>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+%%% Set font sizes
+%======================================================================================================================
+\setbeamerfont{frametitle}{size=\large,series=\bfseries}
+\setbeamerfont{title}{size=\large,series=\bfseries}
+\setbeamerfont{author}{size=\normalsize}
+\setbeamerfont{institute}{size=\normalsize}
+\setbeamerfont{date}{size=\normalsize}
+\setbeamerfont{subtitle}{size=\footnotesize,series=\bfseries}
+\setbeamerfont{block title}{size=\normalsize,series=\bfseries}
+\setbeamerfont{structure}{size=\normalsize,series=\bfseries}
 
+\setbeamertemplate{itemize item}{\scriptsize\raise1.25pt\hbox{\textbullet}}
+\setbeamertemplate{itemize subitem}{\scriptsize\raise1.25pt\hbox{\textbullet}}
+\setbeamertemplate{itemize subsubitem}{\scriptsize\raise1.25pt\hbox{\textbullet}}
 %end<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 %begin>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
@@ -103,6 +118,8 @@
 \setbeamercolor{f_black_b_white_box}{fg=black,bg=white}
 \setbeamercolor{f_blue_b_white_box}{fg=black,bg=white}
 \setbeamercolor{f_white_b_ccnublue_box}{fg=white,bg=ccnublue}
+\setbeamercolor{f_white_b_black_box}{fg=white,bg=black}
+\setbeamercolor{f_black_b_red_box}{fg=black,bg=red}
 \setbeamercolor{redbox}{fg=black,bg=red}
 \newenvironment{Boxblue}[1][\textwidth]
   {\begin{beamercolorbox}[sep=0.1em,shadow=true,wd=#1,rounded=true,center]{bluebox}}
@@ -112,25 +129,6 @@
   {\end{beamercolorbox}}
 %end<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
-%--------------------------------------------------------
-% Set font sizes
-%--------------------------------------------------------
-\setbeamerfont{frametitle}{size=\large,series=\bfseries}
-\setbeamerfont{title}{size=\large,series=\bfseries}
-\setbeamerfont{author}{size=\normalsize}
-\setbeamerfont{date}{size=\scriptsize}
-\setbeamerfont{subtitle}{size=\footnotesize,series=\bfseries}
-\setbeamerfont{block title}{size=\normalsize,series=\bfseries}
-\setbeamerfont{structure}{size=\normalsize,series=\bfseries}
-
-\setbeamertemplate{itemize item}{\scriptsize\raise1.25pt\hbox{\textbullet}}
-\setbeamertemplate{itemize subitem}{\scriptsize\raise1.25pt\hbox{\textbullet}}
-\setbeamertemplate{itemize subsubitem}{\scriptsize\raise1.25pt\hbox{\textbullet}}
-
-
-%--------------------------------------------------------
-
-
 %begin>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 %%% Define title page
 %======================================================================================================================
@@ -139,9 +137,7 @@
 	\pgfdeclareimage[height=1.\@tempdimb]{ccnu_logo_title}{res/ccnu_logo_title.png}%
 	\pgfdeclareimage[height=1.\@tempdimb]{nercel_logo_title}{res/nercel_logo_title.png}%
 	\begin{beamercolorbox}[right,wd=\paperwidth,ht=.2\paperheight,rightskip=0.05\paperwidth]{f_black_b_white_box}
-	%\includegraphics[width=0.3820\paperwidth]{nk_logo.png}
 		\vbox to\@tempdimb{\vfil\pgfuseimage{nercel_logo_title}\vfil}%
-		%\vspace{10pt}
 		\vskip15pt
 	\end{beamercolorbox}
 	
@@ -151,7 +147,7 @@
 				\usebeamerfont{title}\inserttitle
 			};
 		}%
-		\vskip0pt
+		\vskip2pt
 	\end{beamercolorbox}%
 	
 	\nointerlineskip%
@@ -170,7 +166,7 @@
 		\vbox to\@tempdimb{
 			\vfil\pgfuseimage{ccnu_logo_title}\vfil
 		}%
-		\vskip15pt
+		\vskip20pt
 	\end{beamercolorbox}
 }
 %end<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
@@ -207,19 +203,19 @@
 	\leavevmode%
 	\@tempdimb=1em%
 	\hbox{%
-	%\begin{beamercolorbox}[wd=.25\paperwidth,ht=1.\@tempdimb,dp=1ex,center]{bluebox}%
-	%  \usebeamerfont{author in head/foot}\insertshortauthor
-	%\end{beamercolorbox}%
-	%\begin{beamercolorbox}[wd=.25\paperwidth,ht=1.\@tempdimb,dp=1ex,center]{bluebox}%
-	%  \usebeamerfont{author in head/foot}\insertshortdate
-	%\end{beamercolorbox}%
-	\begin{beamercolorbox}[wd=.5\paperwidth,ht=1.\@tempdimb,dp=1ex,center]{redbox}%
-	\usebeamerfont{title in head/foot}
+	\begin{beamercolorbox}[wd=.25\paperwidth,ht=1.\@tempdimb,dp=1ex,center]{f_black_b_red_box}%
+	  \usebeamerfont{author in head/foot}\insertshortauthor
 	\end{beamercolorbox}%
-	\begin{beamercolorbox}[wd=.435\paperwidth,ht=1.\@tempdimb,dp=1ex,center]{f_white_b_ccnublue_box}%
+	\begin{beamercolorbox}[wd=.25\paperwidth,ht=1.\@tempdimb,dp=1ex,center]{f_black_b_red_box}%
+	  \usebeamerfont{author in head/foot}\insertshortdate
+	\end{beamercolorbox}%
+	%\begin{beamercolorbox}[wd=.5\paperwidth,ht=1.\@tempdimb,dp=1ex,center]{f_black_b_red_box}%
+	%\usebeamerfont{title in head/foot}
+	%\end{beamercolorbox}%
+	\begin{beamercolorbox}[wd=.435\paperwidth,ht=1.\@tempdimb,dp=1ex,center]{f_white_b_black_box}%
 	\usebeamerfont{title in head/foot}\insertshorttitle
 	\end{beamercolorbox}%
-	\begin{beamercolorbox}[wd=0.065\paperwidth,ht=1.\@tempdimb,dp=1ex,right]{f_white_b_ccnublue_box}%
+	\begin{beamercolorbox}[wd=0.065\paperwidth,ht=1.\@tempdimb,dp=1ex,right]{f_white_b_black_box}%
 	\insertframenumber{} / \inserttotalframenumber\hspace*{2ex}
 	\end{beamercolorbox}}%
 	\vskip0pt%

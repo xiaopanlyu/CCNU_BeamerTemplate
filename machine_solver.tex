@@ -4,7 +4,7 @@
 %设置为 Beamer 文档类型，设置字体为 10pt，长宽比为16:9，数学字体为 serif 风格
 
 %%%%-----导入宏包-----%%%%
-\usepackage{ccnu}			%导入 CCNU 模板宏包
+\usepackage{ccnu_nercl}			%导入 CCNU 模板宏包
 \usepackage{ctex}			%导入 ctex 宏包，添加中文支持
 \usepackage{amsmath,amsfonts,amssymb,bm}   %导入数学公式所需宏包
 \usepackage{color}			 %字体颜色支持
@@ -14,7 +14,7 @@
 %%%%%%%%%%%%%%%%%%	
 
 
-\beamertemplateballitem		%设置 Beamer 主题
+%\beamertemplateballitem		%设置 Beamer 主题
 
 %%%%------------------------%%%%%
 \catcode`\。=\active         %或者=13
@@ -22,49 +22,40 @@
 %将正文中的“。”号转换为“.”。中文标点国家规范建议科技文献中的句号用圆点替代
 %%%%%%%%%%%%%%%%%%%%%
 
-%%%%----首页信息设置----%%%%
-\title[代数机器解答]{初等数学代数型题目机器解答研究}
-%\subtitle{——这里是副标题}			
-%%%%----标题设置
 
-
-\author[Xiaopan Lyu]{
-  吕小攀, Ph.D. 1st year. \\
+%begin>>>>set title page>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+\title[基于深度网络提取题目中直陈数学关系的研究]{初等数学代数型题目机器解答研究}%title
+\subtitle{——基于深度网络提取题目中直陈数学关系的研究}			
+\author[XIAOPAN LYU]{%个人信息设置
+  吕小攀, a 1st year Ph.D. student. \\
   {\url{xiaopanlyu@mails.ccnu.edu.cn}} \\
   {\url{https://github.com/xiaopanlyu}}
 }
-%%%%----个人信息设置
-  
-\institute[NERCEL]{
+\institute[NERCL]{%机构信息
    华中师范大学$\bullet$ 国家数字化学习工程技术研究中心
 }
-%%%%----机构信息
-
-\date[Apr. 04 2019]{\today}
-%%%%----日期信息
+\date[\today]{\today}%日期信息
+%end>>>>首页信息设置>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
   
 \begin{document}
 
-%\begin{frame}
-%\titlepage
-%\end{frame}				%生成标题页
 
-% ===== title page =====
+%----------------title page---------------
 \begin{frame}[plain]
-  \titlepage
+	\titlepage
 \end{frame}
 
+%----------------Outline page---------------
 \begin{frame}
-\frametitle{Outline}
- \tableofcontents[hideallsubsections]
-\end{frame}				%生成提纲页
+	\frametitle{Outline}
+ 	\tableofcontents[hideallsubsections]
+\end{frame}
 
-% 在每节前插入目录
+
+%----------------insert outline at the begining of each section---------------
 \AtBeginSection[]{\frame{\tableofcontents[currentsection,hideallsubsections]}}
 
-\section{介绍}
-
-
+\section{Introduction}
 \begin{frame}
   \frametitle{介绍}
 

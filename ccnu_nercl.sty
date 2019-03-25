@@ -136,18 +136,19 @@
 	\@tempdimb=4ex
 	\pgfdeclareimage[height=1.\@tempdimb]{ccnu_logo_title}{res/ccnu_logo_title.png}%
 	\pgfdeclareimage[height=1.\@tempdimb]{nercel_logo_title}{res/nercel_logo_title.png}%
-	\begin{beamercolorbox}[right,wd=\paperwidth,ht=.2\paperheight,rightskip=0.05\paperwidth]{f_black_b_white_box}
+	\begin{beamercolorbox}[right,wd=\paperwidth,ht=.15\paperheight,rightskip=0.05\paperwidth]{f_black_b_white_box}
 		\vbox to\@tempdimb{\vfil\pgfuseimage{nercel_logo_title}\vfil}%
-		\vskip15pt
+		\vskip10pt
 	\end{beamercolorbox}
 	
-	\begin{beamercolorbox}[left,leftskip=0.05\paperwidth,wd=\paperwidth,ht=.1\paperheight]{f_white_b_ccnublue_box}
+	\begin{beamercolorbox}[left,leftskip=0.05\paperwidth,wd=\paperwidth,ht=.2\paperheight]{f_white_b_ccnublue_box}
 		\tikz{
 			\node[inner sep=0cm, text width=\paperwidth, minimum height=.05\paperheight,text badly ragged]{
-				\usebeamerfont{title}\inserttitle
+				\usebeamerfont{title}\inserttitle \\
+				\usebeamerfont{subtitle}\insertsubtitle
 			};
 		}%
-		\vskip2pt
+		\vskip5pt
 	\end{beamercolorbox}%
 	
 	\nointerlineskip%
@@ -155,18 +156,18 @@
 	
 	\begin{beamercolorbox}[left,leftskip=0.05\paperwidth,wd=\paperwidth,ht=.5\paperheight]{f_white_b_ccnublue_box}
 		\usebeamerfont{author}\insertauthor\\
-		\vskip15pt
+		\vskip10pt
 		\usebeamerfont{institute}\insertinstitute\\
-		\vskip15pt
+		\vskip10pt
 		\usebeamerfont{date}\insertdate
-		\vskip20pt
+		\vskip10pt
 	\end{beamercolorbox}%
 		
-	\begin{beamercolorbox}[center,wd=\paperwidth,ht=.2\paperheight,]{f_white_b_ccnublue_box}
+	\begin{beamercolorbox}[center,wd=\paperwidth,ht=.15\paperheight,]{f_white_b_ccnublue_box}
 		\vbox to\@tempdimb{
 			\vfil\pgfuseimage{ccnu_logo_title}\vfil
 		}%
-		\vskip20pt
+		\vskip10pt
 	\end{beamercolorbox}
 }
 %end<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
